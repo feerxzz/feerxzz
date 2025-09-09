@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferxzz - Reseñas</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Ajustes específicos de la página de Reseñas */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .review-card {
+            position: relative; /* para posicionar la insignia */
+            padding: 0.95rem;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        /* Insignia de servidor (badge) */
+        .server-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            z-index: 2;
+        }
+        .server-badge img {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            object-fit: cover;
+            display: block;
+        }
+        .server-badge span {
+            font-size: 0.75rem;
+            line-height: 1;
+            color: #e6e6e6;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        .server-badge:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.28);
+        }
+
+        .review-card .card-image {
+            width: 60px;
+            height: 60px;
+            border-width: 2px;
+            border-radius: 12px; /* esquinas redondeadas */
+            margin-bottom: 0.6rem;
+        }
+        .review-card .card-content h3 {
+            margin-bottom: 0.35rem;
+            font-size: 1.1rem;
+        }
+        .review-subtitle {
+            color: #cccccc;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+        }
+        .review-card .card-content p {
+            font-size: 0.9rem;
+        }
+        .review-stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .review-stars i {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+        @media (max-width: 992px) {
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">STAFF</span>
+                <span class="logo-accent">PORTAFOLIO</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/home#home" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/home#about" class="nav-link">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/home#experience" class="nav-link">Experiencia</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/home#skills" class="nav-link">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/home#contact" class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/reseñas" class="nav-link active reviews-link">Reseñas</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="about" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Reseñas</h2>
+                <p class="section-subtitle">Opiniones de proyectos y comunidades con las que he trabajado</p>
+            </div>
+
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="about-card review-card">
+                    <div class="server-badge" title="Servidor compartido">
+                        <img src="/KrakenMc.png" alt="KrakenMC">
+                        <span>KrakenMC</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="/iclowy.gif" alt="iClowy" class="floating-img" />
+                    </div>
+                    <div class="card-content">
+                        <h3>iClowy</h3>
+                        <p class="review-subtitle">Operadora de KrakenMC</p>
+                        <div class="review-stars" aria-label="5 de 5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>
+                            "Desde que Fer se unió al equipo de KrakenMC, fue una persona de vital importancia,
+                            cuando le pedíamos algo, lo hacía sin rechistar y es alguien en quien se puede confiar.
+                            Cumple con todo su trabajo a la perfección convirtiéndose en alguien capaz de ayudarnos 
+                            de una forma muy eficaz y rápida.
+                            
+                            Estoy segura de quién lea esto y lo acepta, será capaz de opinar lo mismo que yo."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="about-card review-card">
+                    <div class="server-badge" title="Servidor compartido">
+                        <img src="/GGCraft.png" alt="GGCraft Network">
+                        <span>GGCraft Network</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="/zchero.jpg" alt="zChero" class="floating-img" />
+                    </div>
+                    <div class="card-content">
+                        <h3>zChero</h3>
+                        <p class="review-subtitle">Ex-Owner de GGCraft Network</p>
+                        <div class="review-stars" aria-label="5 de 5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>
+                            "Para todo aquel servidor que quiera postularse tiene las capacidades suficientes, 
+                            tanto dirigiendo como ideando, organizando y orientando STAFF.
+                            Tiene las capacidades óptimas para un trabajo eficaz y prospero, 
+                            excelencia como Staff espectacular, gran capacidad de apoyo. Te considero más que apto para cargos administrativos"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="about-card review-card">
+                    <div class="server-badge" title="Servidor compartido">
+                        <img src="/Novaclient.png" alt="Nova Client">
+                        <span>Nova Client</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="/harvklz.png" alt="Comunidad" class="floating-img" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Harvklz</h3>
+                        <p class="review-subtitle">Founder Nova client</p>
+                        <div class="review-stars" aria-label="4 de 5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>
+                            "Muy profesional, trata muy bien con los usuarios y es paciente,
+                            no se deja intimidar por ningún usuario problemático y siempre
+                            está dispuesto a buscar soluciones a los problemas de los demás, lo 
+                            recomiendo bastante ya que puede ser fácilmente staff en cualquier server que se proponga."
+                            
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 4 (placeholder) -->
+                <div class="about-card review-card">
+                    <div class="server-badge" title="Servidor compartido">
+                        <img src="/GGCraft.png" alt="GGCraft Network">
+                        <span>GGCraft Network</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="/zpanochita.png" alt="zpanochita" class="floating-img" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Aaron</h3>
+                        <p class="review-subtitle">Configurador y Manager</p>
+                        <div class="review-stars" aria-label="5 de 5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>
+                            "Fer es un Staff Manager bastante activo que cuenta con la suficiente
+                            experiencia para dirigir un staff grande, los trabajos que he podido hacer con él han sido geniales."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 5 (placeholder) -->
+                <div class="about-card review-card">
+                    <div class="server-badge" title="Servidor compartido">
+                        <img src="/soon.png" alt="Servidor">
+                        <span>...</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="/soon.png" alt="Nueva reseña" class="floating-img" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Proximamente</h3>
+                        <p class="review-subtitle"></p>
+                        <div class="review-stars" aria-label="5 de 5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>
+                            "..."
+                        </p>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <!-- CTA: volver al inicio -->
+            <div style="margin-top: 3rem; display: flex; justify-content: center;">
+                <a href="/home#home" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 STAFF Portfalio.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://discord.com/users/747467737537839215" class="social-link"><i class="fab fa-discord"></i></a>
+                    <a href="https://e-z.bio/Ferxzz" class="social-link"><i class="fa-solid fa-book"></i>
+                    <a href="https://github.com/feerxzz" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script>
+    // Fallback automático si el servidor no sirve la ruta con ñ
+    (function() {
+      var preferred = '/reseñas';
+      var fallback = '/reviews';
+      function swapToFallback() {
+        document.querySelectorAll('a[href="' + preferred + '"]').forEach(function(a){
+          a.setAttribute('href', fallback);
+        });
+      }
+      try {
+        fetch(preferred + '/', { method: 'HEAD', cache: 'no-store' })
+          .then(function(res){ if (!res.ok) swapToFallback(); })
+          .catch(swapToFallback);
+      } catch (e) { swapToFallback(); }
+    })();
+    </script>
+</body>
+</html>
