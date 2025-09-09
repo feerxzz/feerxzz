@@ -358,16 +358,6 @@ function enhanceFloatingCards() {
 // Initialize floating cards enhancement
 setTimeout(enhanceFloatingCards, 1000);
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.floating-card');
-    
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.5 + (index * 0.1);
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
 
 // Add loading animation
 window.addEventListener('load', () => {
@@ -404,3 +394,47 @@ fadeInUpStyle.textContent = `
     }
 `;
 document.head.appendChild(fadeInUpStyle);
+
+// Anti-devtools and context-menu protection
+(function() {
+    // Disable right click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Block common devtools/view-source shortcuts
+    document.addEventListener('keydown', function(e) {
+        const key = e.key || '';
+        if (
+            key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (key === 'I' || key === 'i' || key === 'J' || key === 'j' || key === 'C' || key === 'c')) ||
+            (e.ctrlKey && (key === 'U' || key === 'u' || key === 'S' || key === 's'))
+        ) {
+            e.preventDefault();
+            e.stopPropagation();
+            try { showNotification('Acción deshabilitada', 'error'); } catch(_) {}
+            return false;
+        }
+    }, true);
+
+    // Detect devtools open by viewport difference and show overlay
+    let devtoolsOpen = false;
+    const threshold = 160;
+    setInterval(function() {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        const opened = widthDiff > threshold || heightDiff > threshold;
+        if (opened && !devtoolsOpen) {
+            devtoolsOpen = true;
+            const overlay = document.createElement('div');
+            overlay.id = 'anti-devtools-overlay';
+            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.98);color:#fff;display:flex;align-items:center;justify-content:center;z-index:99999;text-align:center;padding:2rem;';
+            overlay.innerHTML = '<div><i class="fas fa-shield-alt" style="font-size:2rem;color:var(--primary-color)"></i><h2 style="margin:1rem 0">Contenido protegido</h2><p>Cierra las herramientas de desarrollador para continuar.</p></div>';
+            document.body.appendChild(overlay);
+        } else if (!opened && devtoolsOpen) {
+            devtoolsOpen = false;
+            const ov = document.getElementById('anti-devtools-overlay');
+            if (ov) ov.remove();
+        }
+    }, 1000);
+})();
