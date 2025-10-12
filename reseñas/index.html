@@ -102,9 +102,71 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Fondo temático: electricidad y metal industrial */
+        .reviews-bg {
+            --metal-base: #0a0b0f;
+            --metal-deep: #07080c;
+            --glow-yellow: 255, 223, 70; /* dorado eléctrico */
+            background-color: var(--metal-base);
+            background-image:
+                /* grano de metal cepillado (vertical) */
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, rgba(0,0,0,0) 1px 3px),
+                /* brillo metálico diagonal */
+                linear-gradient(135deg, rgba(255, 223, 70, 0.06) 0%, rgba(255,255,255,0.00) 55%),
+                /* halos dorados suaves */
+                radial-gradient(900px 600px at 110% -10%, rgba(var(--glow-yellow), 0.10), transparent 60%),
+                radial-gradient(800px 600px at -10% 110%, rgba(var(--glow-yellow), 0.08), transparent 65%),
+                /* profundidad base */
+                linear-gradient(180deg, var(--metal-base) 0%, var(--metal-deep) 100%);
+            background-attachment: fixed, fixed, fixed, fixed, fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        /* Rayos eléctricos animados (sutiles) */
+        .reviews-bg::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(62deg, rgba(255,255,255,0.00) 45%, rgba(var(--glow-yellow), 0.55) 48%, rgba(var(--glow-yellow), 0.95) 50%, rgba(255,255,255,0.00) 52%),
+                linear-gradient(118deg, rgba(255,255,255,0.00) 40%, rgba(var(--glow-yellow), 0.60) 43%, rgba(var(--glow-yellow), 1.00) 45%, rgba(255,255,255,0.00) 47%),
+                linear-gradient(-35deg, rgba(255,255,255,0.00) 48%, rgba(255,255,255,0.50) 50%, rgba(255,255,255,0.00) 52%);
+            background-size: 130% 100%, 140% 100%, 120% 100%;
+            background-position: -15% 25%, 115% 65%, 50% -10%;
+            mix-blend-mode: screen;
+            opacity: 0.45;
+            filter: drop-shadow(0 0 10px rgba(var(--glow-yellow), 0.55)) drop-shadow(0 0 22px rgba(var(--glow-yellow), 0.35));
+            animation: lightning-flicker 6s infinite steps(60);
+        }
+        /* Rejilla industrial con acento dorado muy suave */
+        .reviews-bg::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+                repeating-linear-gradient(135deg, rgba(var(--glow-yellow), 0.035) 0 2px, rgba(0,0,0,0) 2px 26px);
+            background-size: 44px 44px, 44px 44px, 44px 44px;
+            mix-blend-mode: overlay;
+        }
+        @keyframes lightning-flicker {
+            0%   { opacity: .30; background-position: -15% 25%, 115% 65%, 50% -10%; }
+            8%   { opacity: .70; }
+            12%  { opacity: .15; }
+            22%  { opacity: .80; background-position: -5% 20%, 105% 60%, 52% -8%; }
+            36%  { opacity: .35; }
+            48%  { opacity: .75; background-position: 5% 25%, 95% 55%, 55% -5%; }
+            68%  { opacity: .40; }
+            82%  { opacity: .65; }
+            100% { opacity: .45; background-position: -15% 25%, 115% 65%, 50% -10%; }
+        }
     </style>
 </head>
-<body>
+<body class="reviews-bg">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -151,7 +213,7 @@
             <div class="reviews-grid">
                 <!-- Review 1 -->
                 <div class="about-card review-card">
-                    <div class="server-badge" title="Servidor compartido">
+                    <div class="server-badge" title="KrakenMC">
                         <img src="/KrakenMc.png" alt="KrakenMC">
                         <span>KrakenMC</span>
                     </div>
@@ -181,7 +243,7 @@
 
                 <!-- Review 2 -->
                 <div class="about-card review-card">
-                    <div class="server-badge" title="Servidor compartido">
+                    <div class="server-badge" title="GGCraft Network">
                         <img src="/GGCraft.png" alt="GGCraft Network">
                         <span>GGCraft Network</span>
                     </div>
@@ -209,7 +271,7 @@
 
                 <!-- Review 3 -->
                 <div class="about-card review-card">
-                    <div class="server-badge" title="Servidor compartido">
+                    <div class="server-badge" title="Nova Client">
                         <img src="/Novaclient.png" alt="Nova Client">
                         <span>Nova Client</span>
                     </div>
@@ -218,7 +280,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Harvklz</h3>
-                        <p class="review-subtitle">Founder Nova client</p>
+                        <p class="review-subtitle">Founder de Nova client</p>
                         <div class="review-stars" aria-label="4 de 5">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -238,7 +300,7 @@
 
                 <!-- Review 4 (placeholder) -->
                 <div class="about-card review-card">
-                    <div class="server-badge" title="Servidor compartido">
+                    <div class="server-badge" title="GGCraft Network">
                         <img src="/GGCraft.png" alt="GGCraft Network">
                         <span>GGCraft Network</span>
                     </div>
@@ -247,7 +309,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Aaron</h3>
-                        <p class="review-subtitle">Configurador y Manager</p>
+                        <p class="review-subtitle">Configurador & Manager de GGCraft Network</p>
                         <div class="review-stars" aria-label="5 de 5">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -263,6 +325,58 @@
                 </div>
 
                 <!-- Review 5 (placeholder) -->
+                <div class="about-card review-card">
+                    <div class="server-badge" title="GGCraft Network">
+                        <img src="/GGCraft.png" alt="Servidor">
+                        <span>GGCraft Network</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="/theandresgg.png" alt="Nueva reseña" class="floating-img" />
+                    </div>
+                    <div class="card-content">
+                        <h3>TheAndresGG</h3>
+                        <p class="review-subtitle">Founder GGCraft Network</p>
+                        <div class="review-stars" aria-label="5 de 5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>
+                            "Persona con gran ambición, trabajo en equipo, eficiencia en cualquier tarea que se presente. 
+                            Organizado y comprometido, entre muchas otras cosas.
+                            Durante su estadía en GGCRAFT mostró profesionalidad, ayudo a una gran cantidad de personas en base a su propio conocimiento, al igual que aprendió bastante por parte del servidor."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 6 (placeholder) -->
+                <div class="about-card review-card">
+                    <div class="server-badge" title="Servidor compartido">
+                        <img src="/KrakenMc.png" alt="Servidor">
+                        <span>KrakenMC</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="/spookyp2w.gif" alt="Nueva reseña" class="floating-img" />
+                    </div>
+                    <div class="card-content">
+                        <h3>SpookyP2W</h3>
+                        <p class="review-subtitle">Ex-SrMod de KrakenMC</p>
+                        <div class="review-stars" aria-label="5 de 5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <p>
+                            "El mejor STAFF que he visto hasta el momento solo que te hiciste un poco inactivo por lo de tus clases, eres lo bastante profesional y sé que lo harás mucho mejor."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 7 (placeholder) -->
                 <div class="about-card review-card">
                     <div class="server-badge" title="Servidor compartido">
                         <img src="/soon.png" alt="Servidor">
