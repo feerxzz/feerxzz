@@ -352,8 +352,10 @@ body {
 /* About Section */
 .about {
     padding: 100px 0;
-    background: var(--bg-section);
+    background: linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 55%, #3a2f00 100%);
+    overflow: clip;
 }
+
 
 .about-content {
     display: grid;
@@ -367,7 +369,7 @@ body {
     gap: 1.5rem;
     margin-bottom: 2rem;
     padding: 2rem;
-    background: rgba(255, 215, 0, 0.05);
+    background: rgba(255, 215, 0, 0.2);
     border-radius: 15px;
     border: 1px solid rgba(255, 215, 0, 0.1);
     transition: all 0.3s ease;
@@ -414,7 +416,7 @@ body {
 .stat-item {
     text-align: center;
     padding: 2rem;
-    background: rgba(255, 215, 0, 0.05);
+    background: rgba(255, 215, 0, 0.2);
     border-radius: 15px;
     border: 1px solid rgba(255, 215, 0, 0.1);
     transition: all 0.3s ease;
@@ -841,6 +843,8 @@ body {
 .contact::before {
     background: linear-gradient(to bottom, var(--bg-section) 0%, var(--bg-dark) 100%);
 }
+
+
 
 /* Reviews creative background canvas setup */
 #reviews { position: relative; overflow: clip; }
